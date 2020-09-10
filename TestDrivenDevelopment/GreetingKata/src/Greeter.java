@@ -32,8 +32,13 @@ public class Greeter {
 			} else {
 				if (strings[i].contains(",")) {
 					String[] split = strings[i].split(", ");
-					// System.out.print(split[0] + "" + split[1] + "");
-					normalStrings.addAll(Arrays.asList(split));
+					if (strings[i].contains("\"")) {
+						normalStrings.add(strings[i].substring(1, strings[i].length() - 1));
+					} else {
+
+						// System.out.print(split[0] + "" + split[1] + "");
+						normalStrings.addAll(Arrays.asList(split));
+					}
 					length = split.length - 1;
 				} else {
 					normalStrings.add(strings[i]);

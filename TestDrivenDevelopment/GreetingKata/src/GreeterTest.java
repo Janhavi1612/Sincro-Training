@@ -47,4 +47,10 @@ class GreeterTest {
 		Assertions.assertEquals("Hello, Bob, Charlie, and Dianne.",
 				greeter.greet(new String[] { "Bob", "Charlie, Dianne" }));
 	}
+
+	@Test
+	void shouldAllowEscapingCommas() {
+		Assertions.assertEquals("Hello, Bob and Charlie, Dianne.",
+				greeter.greet(new String[] { "Bob", "\"Charlie, Dianne\"" }));
+	}
 }
