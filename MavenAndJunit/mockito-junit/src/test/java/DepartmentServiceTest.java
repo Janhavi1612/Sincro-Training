@@ -1,4 +1,5 @@
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
@@ -23,6 +24,8 @@ class DepartmentServiceTest {
 		departmentServiceImpl.setEmployeeValidatorService(new FakeEmployeeVallidatorService());
 
 		Assertions.assertEquals(3, departmentServiceImpl.getTotalEmployees("IT"));
+		verify(mockEmpSrvc).findEmployeeByDepartment("IT");
+		// verify(mockEmpSrvc).findEmployeeByDepartment("Sales");
 	}
 
 }
