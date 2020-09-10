@@ -41,4 +41,10 @@ class GreeterTest {
 		Assertions.assertEquals("Hello, Amy and Charlotte. AND HELLO BRIAN!",
 				greeter.greet(new String[] { "Amy", "BRIAN", "Charlotte" }));
 	}
+
+	@Test
+	void shouldSplitStringsByCommas() {
+		Assertions.assertEquals("Hello, Bob, Charlie, and Dianne.",
+				greeter.greet(new String[] { "Bob", "Charlie, Dianne" }));
+	}
 }

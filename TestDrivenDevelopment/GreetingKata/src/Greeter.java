@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Greeter {
 
@@ -24,15 +25,23 @@ public class Greeter {
 	public String greet(String[] strings) {
 		ArrayList<String> normalStrings = new ArrayList<String>();
 		ArrayList<String> shoutStrings = new ArrayList<String>();
+		int length = strings.length;
 		for (int i = 0; i < strings.length; i++) {
-			if (!isUpperCase(strings[i])) {
-				normalStrings.add(strings[i]);
-			} else {
+			if (isUpperCase(strings[i])) {
 				shoutStrings.add(strings[i]);
+			} else {
+				if (strings[i].contains(",")) {
+					String[] split = strings[i].split(", ");
+					// System.out.print(split[0] + "" + split[1] + "");
+					normalStrings.addAll(Arrays.asList(split));
+					length = split.length - 1;
+				} else {
+					normalStrings.add(strings[i]);
+				}
 			}
 		}
 		String hello = "Hello";
-		if (strings.length == 2) {
+		if (length == 2) {
 			hello = hello + " ";
 		} else {
 			hello = hello + ", ";
