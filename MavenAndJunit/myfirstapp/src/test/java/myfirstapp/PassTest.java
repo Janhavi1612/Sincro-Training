@@ -28,7 +28,7 @@ public class PassTest {
 
 	@Test
 	public void testIfPass() {
-		StudentMarks s1 = new StudentMarks();
+		StudentMarks s1 = new StudentMarks("Sam", 10, 20, 20);
 		System.out.println("Inout total is: " + inputTotal);
 		assertEquals(result, s1.checkIfPass(inputTotal));
 
