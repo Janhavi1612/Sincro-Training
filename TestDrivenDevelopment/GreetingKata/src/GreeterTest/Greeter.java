@@ -11,21 +11,19 @@ public class Greeter {
 	}
 
 	public String greet(String string) {
+		StringBuilder builder = new StringBuilder();
 		if (string.equals("")) {
 			string = "my friend";
+			builder.append("my friend");
 		}
 		if (greeterUtil.isUpperCase(string)) {
+			builder.append("HELLO " + string + "!");
 			return "HELLO " + string + "!";
 		}
+		builder.append("Hello, " + string);
+		System.out.println(builder);
 		return "Hello, " + string;
 	}
-
-	// add in StringUtil class
-	/*
-	 * private static boolean isUpperCase(String string) { for (int i = 0; i <
-	 * string.length(); i++) { if (!Character.isUpperCase(string.charAt(i))) {
-	 * return false; } } return true; }
-	 */
 
 	public String greet(String[] strings) {
 		ArrayList<String> normalStrings = new ArrayList<String>();
@@ -50,29 +48,20 @@ public class Greeter {
 				}
 			}
 		}
+		StringBuilder builder = new StringBuilder();
 		String hello = "Hello";
+		builder.append("Hello");
 		if (length == 2) {
+			builder.append(" ");
 			hello = hello + " ";
 		} else {
+			builder.append(", ");
 			hello = hello + ", ";
 		}
+		builder.append(greeterUtil.greetNormal(normalStrings) + greeterUtil.greetShouting(shoutStrings));
+		System.out.println(builder);
 		return hello + greeterUtil.greetNormal(normalStrings) + greeterUtil.greetShouting(shoutStrings);
 
 	}
-
-	// use interface
-	// check strings in java8
-	/*
-	 * private String greetShouting(ArrayList<String> shoutStrings) { String output
-	 * = ""; for (int i = 0; i < shoutStrings.size(); i++) { output = output +
-	 * " AND HELLO " + shoutStrings.get(i) + "!"; } return output; }
-	 * 
-	 * private String greetNormal(ArrayList<String> normalStrings) { int inputSize =
-	 * normalStrings.size(); if (inputSize == 2) { return normalStrings.get(0) +
-	 * " and " + normalStrings.get(1) + "."; } else { String output = ""; for (int i
-	 * = 0; i < inputSize; i++) { if (i + 1 == inputSize) { output = output + "and "
-	 * + normalStrings.get(i) + "."; } else { output = output + normalStrings.get(i)
-	 * + ", "; } } return output; } }
-	 */
 
 }
