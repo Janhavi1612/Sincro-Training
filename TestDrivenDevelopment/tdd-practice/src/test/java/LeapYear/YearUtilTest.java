@@ -9,7 +9,7 @@ import org.junit.rules.ExpectedException;
 
 import LeapYear.YearUtil;
 
-public class LeapYearTest {
+public class YearUtilTest {
 
 	YearUtil yearUtil;
 
