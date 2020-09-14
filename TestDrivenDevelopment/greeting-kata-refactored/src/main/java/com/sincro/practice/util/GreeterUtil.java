@@ -1,8 +1,16 @@
 package com.sincro.practice.util;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class GreeterUtil implements GreeterUtilInterface<String> {
+
+	private static final String EXCLAMATION = "!";
+	private static final String SPACE = " ";
+	private static final String AND = "AND";
+	private static final String HELLO = "HELLO";
+	private static final String AND_NORMAL = "and";
+	private static final String FULLSTOP = ".";
+	private static final String COMMA = ",";
 
 	public boolean isUpperCase(String string) {
 		for (int i = 0; i < string.length(); i++) {
@@ -13,61 +21,32 @@ public class GreeterUtil implements GreeterUtilInterface<String> {
 		return true;
 	}
 
-	public String greetShouting(ArrayList<String> shoutStrings) {
+	public String greetShouting(List<String> shoutStrings) {
 		StringBuilder builder = new StringBuilder();
-		String output = "";
 		for (int i = 0; i < shoutStrings.size(); i++) {
-			builder.append(" AND HELLO " + shoutStrings.get(i) + "!");
-			output = output + " AND HELLO " + shoutStrings.get(i) + "!";
+			builder.append(SPACE).append(AND).append(SPACE).append(HELLO).append(SPACE).append(shoutStrings.get(i))
+					.append(EXCLAMATION);
 		}
-		// System.out.println(builder);
-		return output;
+		return builder.toString();
 	}
 
-	public String greetNormal(ArrayList<String> normalStrings) {
+	public String greetNormal(List<String> normalStrings) {
 		int inputSize = normalStrings.size();
 		StringBuilder builder = new StringBuilder();
 		if (inputSize == 2) {
-			builder.append(normalStrings.get(0) + " and " + normalStrings.get(1) + ".");
-			// System.out.println(builder);
-			return normalStrings.get(0) + " and " + normalStrings.get(1) + ".";
+			builder.append(normalStrings.get(0)).append(SPACE).append(AND_NORMAL).append(SPACE)
+					.append(normalStrings.get(1)).append(FULLSTOP);
+			return builder.toString();
 		} else {
-			String output = "";
 			for (int i = 0; i < inputSize; i++) {
 				if (i + 1 == inputSize) {
-					builder.append("and " + normalStrings.get(i) + ".");
-					output = output + "and " + normalStrings.get(i) + ".";
+					builder.append(AND_NORMAL).append(SPACE).append(normalStrings.get(i)).append(FULLSTOP);
 				} else {
-					builder.append(normalStrings.get(i) + ", ");
-					output = output + normalStrings.get(i) + ", ";
+					builder.append(normalStrings.get(i)).append(COMMA).append(SPACE);
 				}
 			}
-			// System.out.println(builder);
-			return output;
+			return builder.toString();
 		}
 	}
-
-	/*
-	 * @Override public boolean isUpperCase(String string) { for (int i = 0; i <
-	 * string.length(); i++) { if (!Character.isUpperCase(string.charAt(i))) {
-	 * return false; } } return true; }
-	 * 
-	 * @Override public String greetShouting(ArrayList<String> shoutStrings) {
-	 * StringBuilder builder = new StringBuilder(); String output = ""; for (int i =
-	 * 0; i < shoutStrings.size(); i++) { builder.append(" AND HELLO " +
-	 * shoutStrings.get(i) + "!"); output = output + " AND HELLO " +
-	 * shoutStrings.get(i) + "!"; } // System.out.println(builder); return output; }
-	 * 
-	 * @Override public String greetNormal(ArrayList<String> normalStrings) { int
-	 * inputSize = normalStrings.size(); StringBuilder builder = new
-	 * StringBuilder(); if (inputSize == 2) { builder.append(normalStrings.get(0) +
-	 * " and " + normalStrings.get(1) + "."); // System.out.println(builder); return
-	 * normalStrings.get(0) + " and " + normalStrings.get(1) + "."; } else { String
-	 * output = ""; for (int i = 0; i < inputSize; i++) { if (i + 1 == inputSize) {
-	 * builder.append("and " + normalStrings.get(i) + "."); output = output + "and "
-	 * + normalStrings.get(i) + "."; } else { builder.append(normalStrings.get(i) +
-	 * ", "); output = output + normalStrings.get(i) + ", "; } } //
-	 * System.out.println(builder); return output; } }
-	 */
 
 }

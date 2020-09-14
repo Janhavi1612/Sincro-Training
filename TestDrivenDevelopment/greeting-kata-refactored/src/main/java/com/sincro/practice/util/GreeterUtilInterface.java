@@ -1,11 +1,11 @@
 package com.sincro.practice.util;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface GreeterUtilInterface<obj> {
 	public boolean isUpperCase(String string);
 
-	public String greetShouting(ArrayList<obj> shoutStrings);
+	public String greetShouting(List<obj> shoutStrings);
 
-	public String greetNormal(ArrayList<obj> normalStrings);
+	public String greetNormal(List<obj> normalStrings);
 }

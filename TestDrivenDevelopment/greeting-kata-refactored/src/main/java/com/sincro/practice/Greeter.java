@@ -2,10 +2,19 @@ package com.sincro.practice;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import com.sincro.practice.util.GreeterUtil;
 
 public class Greeter {
+	private static final String EXCLAMATION = "!";
+	private static final String HELLO_MY_FRIEND = "Hello, my friend";
+	private static final String HELLO = "HELLO";
+	private static final String HELLO_NORMAL = "Hello";
+	private static final String SPACE = " ";
+	private static final String COMMA = ",";
 	GreeterUtil greeterUtil;
 
 	Greeter() {
@@ -14,55 +23,52 @@ public class Greeter {
 
 	public String greet(String string) {
 		StringBuilder builder = new StringBuilder();
-		if (string.equals("")) {
-			string = "my friend";
-			builder.append("my friend");
+		if (string.equals(null) || string.isEmpty()) {
+			return HELLO_MY_FRIEND;
 		}
 		if (greeterUtil.isUpperCase(string)) {
-			builder.append("HELLO " + string + "!");
-			return "HELLO " + string + "!";
+			builder.append(HELLO).append(SPACE).append(string).append(EXCLAMATION);
+			return builder.toString();
 		}
-		builder.append("Hello, " + string);
+		builder.append(HELLO_NORMAL).append(COMMA).append(SPACE).append(string);
 		System.out.println(builder);
-		return "Hello, " + string;
+		return builder.toString();
 	}
 
 	public String greet(String[] strings) {
-		ArrayList<String> normalStrings = new ArrayList<String>();
-		ArrayList<String> shoutStrings = new ArrayList<String>();
+		List<String> normalStrings = new ArrayList<String>();
+		Predicate<String> predicate = str -> greeterUtil.isUpperCase(str);
+
+		List<String> shoutStrings = Arrays.stream(strings).filter(predicate).collect(Collectors.toList());
+		List<String> normalStrings2 = Arrays.stream(strings).filter(predicate.negate()).map(str -> str.split(","))
+				.flatMap(Arrays::stream).collect(Collectors.toList());
+
 		int length = strings.length;
 		for (int i = 0; i < strings.length; i++) {
-			if (greeterUtil.isUpperCase(strings[i])) {
-				shoutStrings.add(strings[i]);
-			} else {
-				if (strings[i].contains(",")) {
-					String[] split = strings[i].split(", ");
-					if (strings[i].contains("\"")) {
-						normalStrings.add(strings[i].substring(1, strings[i].length() - 1));
-					} else {
 
-						// System.out.print(split[0] + "" + split[1] + "");
-						normalStrings.addAll(Arrays.asList(split));
-					}
-					length = split.length - 1;
+			if (strings[i].contains(",")) {
+				String[] split = strings[i].split(", ");
+				if (strings[i].contains("\"")) {
+					normalStrings.add(strings[i].substring(1, strings[i].length() - 1));
 				} else {
-					normalStrings.add(strings[i]);
+					normalStrings.addAll(Arrays.asList(split));
 				}
+				length = split.length - 1;
+			} else {
+				normalStrings.add(strings[i]);
 			}
+
 		}
 		StringBuilder builder = new StringBuilder();
-		String hello = "Hello";
-		builder.append("Hello");
+		builder.append(HELLO_NORMAL);
 		if (length == 2) {
-			builder.append(" ");
-			hello = hello + " ";
+			builder.append(SPACE);
 		} else {
-			builder.append(", ");
-			hello = hello + ", ";
+			builder.append(COMMA).append(SPACE);
 		}
-		builder.append(greeterUtil.greetNormal(normalStrings) + greeterUtil.greetShouting(shoutStrings));
+		builder.append(greeterUtil.greetNormal(normalStrings)).append(greeterUtil.greetShouting(shoutStrings));
 		System.out.println(builder);
-		return hello + greeterUtil.greetNormal(normalStrings) + greeterUtil.greetShouting(shoutStrings);
+		return builder.toString();
 
 	}
 
