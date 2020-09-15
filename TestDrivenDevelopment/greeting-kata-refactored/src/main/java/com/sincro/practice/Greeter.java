@@ -15,6 +15,7 @@ public class Greeter {
 	private static final String HELLO_NORMAL = "Hello";
 	private static final String SPACE = " ";
 	private static final String COMMA = ",";
+	int length;
 	GreeterUtil greeterUtil;
 
 	Greeter() {
@@ -31,34 +32,31 @@ public class Greeter {
 			return builder.toString();
 		}
 		builder.append(HELLO_NORMAL).append(COMMA).append(SPACE).append(string);
-		System.out.println(builder);
 		return builder.toString();
 	}
 
 	public String greet(String[] strings) {
-		List<String> normalStrings = new ArrayList<String>();
+		length = strings.length;
 		Predicate<String> predicate = str -> greeterUtil.isUpperCase(str);
 
 		List<String> shoutStrings = Arrays.stream(strings).filter(predicate).collect(Collectors.toList());
-		List<String> normalStrings2 = Arrays.stream(strings).filter(predicate.negate()).map(str -> str.split(","))
-				.flatMap(Arrays::stream).collect(Collectors.toList());
 
-		int length = strings.length;
-		for (int i = 0; i < strings.length; i++) {
-
-			if (strings[i].contains(",")) {
-				String[] split = strings[i].split(", ");
-				if (strings[i].contains("\"")) {
-					normalStrings.add(strings[i].substring(1, strings[i].length() - 1));
-				} else {
-					normalStrings.addAll(Arrays.asList(split));
+		List<String> normalStrings3 = new ArrayList<String>();
+		Arrays.stream(strings).filter(predicate.negate()).forEach(str -> {
+			if (str.contains(",")) {
+				String[] split = str.split(", ");
+				length++;
+				if (!str.contains("\"")) {
+					normalStrings3.addAll(Arrays.asList(split));
+				} else if (str.contains("\"")) {
+					normalStrings3.add(str.replace("\"", ""));
 				}
-				length = split.length - 1;
 			} else {
-				normalStrings.add(strings[i]);
+				normalStrings3.add(str);
 			}
+		});
+		normalStrings3.stream().map(str -> str.replace(" ", "")).collect(Collectors.toList());
 
-		}
 		StringBuilder builder = new StringBuilder();
 		builder.append(HELLO_NORMAL);
 		if (length == 2) {
@@ -66,8 +64,8 @@ public class Greeter {
 		} else {
 			builder.append(COMMA).append(SPACE);
 		}
-		builder.append(greeterUtil.greetNormal(normalStrings)).append(greeterUtil.greetShouting(shoutStrings));
-		System.out.println(builder);
+
+		builder.append(greeterUtil.greetNormal(normalStrings3)).append(greeterUtil.greetShouting(shoutStrings));
 		return builder.toString();
 
 	}

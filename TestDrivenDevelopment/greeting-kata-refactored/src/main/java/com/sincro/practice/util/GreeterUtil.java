@@ -2,7 +2,7 @@ package com.sincro.practice.util;
 
 import java.util.List;
 
-public class GreeterUtil implements GreeterUtilInterface<String> {
+public class GreeterUtil implements GreeterInterface<String> {
 
 	private static final String EXCLAMATION = "!";
 	private static final String SPACE = " ";
@@ -11,6 +11,7 @@ public class GreeterUtil implements GreeterUtilInterface<String> {
 	private static final String AND_NORMAL = "and";
 	private static final String FULLSTOP = ".";
 	private static final String COMMA = ",";
+	private static final String HELLO_NORMAL = "Hello";
 
 	public boolean isUpperCase(String string) {
 		for (int i = 0; i < string.length(); i++) {
@@ -36,8 +37,9 @@ public class GreeterUtil implements GreeterUtilInterface<String> {
 		if (inputSize == 2) {
 			builder.append(normalStrings.get(0)).append(SPACE).append(AND_NORMAL).append(SPACE)
 					.append(normalStrings.get(1)).append(FULLSTOP);
-			return builder.toString();
+
 		} else {
+
 			for (int i = 0; i < inputSize; i++) {
 				if (i + 1 == inputSize) {
 					builder.append(AND_NORMAL).append(SPACE).append(normalStrings.get(i)).append(FULLSTOP);
@@ -45,8 +47,9 @@ public class GreeterUtil implements GreeterUtilInterface<String> {
 					builder.append(normalStrings.get(i)).append(COMMA).append(SPACE);
 				}
 			}
-			return builder.toString();
+
 		}
+		return builder.toString();
 	}
 
 }
