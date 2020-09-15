@@ -6,17 +6,11 @@ public class YearUtil {
 			throw new IllegalArgumentException("Negative year is not a valid input");
 		} else {
 			boolean isLeap = false;
-			if (year % 4 == 0) {
-				if (year % 100 == 0) {
-					if (year % 400 == 0)
-						isLeap = true;
-					else
-						isLeap = false;
-				} else
-					isLeap = true;
-			} else {
-				isLeap = false;
+
+			if ((year % 4 == 0 && year % 100 == 0 && year % 400 == 0) || (year % 4 == 0 && year % 100 != 0)) {
+				isLeap = true;
 			}
+
 			return isLeap;
 		}
 	}

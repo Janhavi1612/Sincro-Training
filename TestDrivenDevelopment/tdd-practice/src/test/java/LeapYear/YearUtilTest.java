@@ -7,8 +7,6 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import LeapYear.YearUtil;
-
 public class YearUtilTest {
 
 	YearUtil yearUtil;
@@ -47,17 +45,5 @@ public class YearUtilTest {
 		thrown.expectMessage("Negative year is not a valid input");
 		assertEquals(false, yearUtil.isLeapYear(-2005));
 	}
-
-	/*
-	 * @Test public void shouldShowErrorMessageForNullArgument() {
-	 * thrown.expect(IllegalArgumentException.class);
-	 * thrown.expectMessage("Null is not a valid input"); assertEquals(false,
-	 * yearUtil.isLeapYear(null)); }
-	 * 
-	 * @Test public void shouldShowErrorMessageForNonNumberArgument() {
-	 * thrown.expect(IllegalArgumentException.class);
-	 * thrown.expectMessage("Argument type should be Long"); assertEquals(false,
-	 * yearUtil.isLeapYear("string")); }
-	 */
 
 }
