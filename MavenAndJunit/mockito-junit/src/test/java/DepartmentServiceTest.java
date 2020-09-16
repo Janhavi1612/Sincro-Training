@@ -28,4 +28,21 @@ class DepartmentServiceTest {
 		// verify(mockEmpSrvc).findEmployeeByDepartment("Sales");
 	}
 
+	@Test
+	void testAddDepartment() {
+		List<Employee> employees = Arrays.asList(new Employee("Phyllis", "Sales"), new Employee("Karen", "IT"),
+				new Employee("Pam", "Sales"), new Employee("Toby", "HR"));
+
+		List<String> departmentEmployees = Arrays.asList("", "bot", "Kim", "Sam", "Jim");
+		DepartmentServiceImpl departmentServiceImpl = new DepartmentServiceImpl();
+
+		EmployeeService mockEmpSrvc = mock(EmployeeService.class);
+		when(mockEmpSrvc.getEmployees()).thenReturn(employees);
+
+		departmentServiceImpl.setEmployeeService(mockEmpSrvc);
+		int result = departmentServiceImpl.addDepartment("Accounting", departmentEmployees);
+		Assertions.assertEquals(7, result);
+
+	}
+
 }

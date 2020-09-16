@@ -15,4 +15,15 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeeDao.findEmployeeByDepartment(department);
 	}
 
+	@Override
+	public void addEmployees(List<Employee> employees) {
+		employeeDao.addEmployees(employees);
+
+	}
+
+	@Override
+	public List<Employee> getEmployees() {
+		return employeeDao.getEmployees();
+	}
+
 }

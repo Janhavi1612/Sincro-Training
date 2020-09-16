@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class DepartmentServiceImpl implements DepartmentService {
@@ -26,6 +28,21 @@ public class DepartmentServiceImpl implements DepartmentService {
 		List<Employee> filtered = employees.stream().filter(x -> employeeValidatorService.isValid(x))
 				.collect(Collectors.toList());
 		return filtered.size();
+	}
+
+	public int addDepartment(String department, List<String> departmentEmployees) {
+		List<Employee> newEmployees = new ArrayList<Employee>();
+		Predicate<String> StringPredicate = str -> isValid(str);
+		departmentEmployees.stream().filter(StringPredicate)
+				.forEach(str -> newEmployees.add(new Employee(department, str)));
+		if (newEmployees.size() != 0) {
+			newEmployees.addAll(employeeService.getEmployees());
+		}
+		return newEmployees.size();
+	}
+
+	private boolean isValid(String str) {
+		return !str.isEmpty() && !str.equals("bot");
 	}
 
 }

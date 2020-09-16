@@ -7,4 +7,15 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return null;
 	}
 
+	@Override
+	public void addEmployees(List<Employee> employees) {
+		// database
+	}
+
+	@Override
+	public List<Employee> getEmployees() {
+		// database
+		return null;
+	}
+
 }
