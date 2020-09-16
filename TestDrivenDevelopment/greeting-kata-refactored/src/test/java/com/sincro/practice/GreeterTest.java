@@ -30,7 +30,7 @@ class GreeterTest {
 
 	@Test
 	void shouldHandleTwoNameInput() {
-		Assertions.assertEquals("Hello Jill and Jane.", greeter.greet(new String[] { "Jill", "Jane" }));
+		Assertions.assertEquals("Hello, Jill and Jane.", greeter.greet(new String[] { "Jill", "Jane" }));
 	}
 
 	@Test

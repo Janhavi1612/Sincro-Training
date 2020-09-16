@@ -2,7 +2,7 @@ package com.sincro.practice.util;
 
 import java.util.List;
 
-public class GreeterUtil implements GreeterInterface<String> {
+public class GreeterUtil {
 
 	private static final String EXCLAMATION = "!";
 	private static final String SPACE = " ";
@@ -11,23 +11,16 @@ public class GreeterUtil implements GreeterInterface<String> {
 	private static final String AND_NORMAL = "and";
 	private static final String FULLSTOP = ".";
 	private static final String COMMA = ",";
-	private static final String HELLO_NORMAL = "Hello";
 
 	public boolean isUpperCase(String string) {
-		for (int i = 0; i < string.length(); i++) {
-			if (!Character.isUpperCase(string.charAt(i))) {
-				return false;
-			}
-		}
-		return true;
+		return string.chars().allMatch(Character::isUpperCase);
+
 	}
 
 	public String greetShouting(List<String> shoutStrings) {
 		StringBuilder builder = new StringBuilder();
-		for (int i = 0; i < shoutStrings.size(); i++) {
-			builder.append(SPACE).append(AND).append(SPACE).append(HELLO).append(SPACE).append(shoutStrings.get(i))
-					.append(EXCLAMATION);
-		}
+		shoutStrings.forEach(str -> builder.append(SPACE).append(AND).append(SPACE).append(HELLO).append(SPACE)
+				.append(str).append(EXCLAMATION));
 		return builder.toString();
 	}
 
@@ -37,16 +30,10 @@ public class GreeterUtil implements GreeterInterface<String> {
 		if (inputSize == 2) {
 			builder.append(normalStrings.get(0)).append(SPACE).append(AND_NORMAL).append(SPACE)
 					.append(normalStrings.get(1)).append(FULLSTOP);
-
 		} else {
 
-			for (int i = 0; i < inputSize; i++) {
-				if (i + 1 == inputSize) {
-					builder.append(AND_NORMAL).append(SPACE).append(normalStrings.get(i)).append(FULLSTOP);
-				} else {
-					builder.append(normalStrings.get(i)).append(COMMA).append(SPACE);
-				}
-			}
+			normalStrings.stream().limit(inputSize - 1).forEach(str -> builder.append(str).append(COMMA).append(SPACE));
+			builder.append(AND_NORMAL).append(SPACE).append(normalStrings.get(inputSize - 1)).append(FULLSTOP);
 
 		}
 		return builder.toString();
