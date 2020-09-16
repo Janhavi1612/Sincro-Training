@@ -45,4 +45,19 @@ class DepartmentServiceTest {
 
 	}
 
+	@Test
+	void testEditDepartment() {
+
+		DepartmentServiceImpl departmentServiceImpl = new DepartmentServiceImpl();
+
+		EmployeeService mockEmpSrvc = mock(EmployeeService.class);
+		departmentServiceImpl.setEmployeeService(mockEmpSrvc);
+
+		when(mockEmpSrvc.getEmployee("Pam")).thenReturn(new Employee("Pam", "Sales"));
+
+		Assertions.assertTrue(departmentServiceImpl.editDepartment("Pam", "IT"));
+		Assertions.assertFalse(departmentServiceImpl.editDepartment("Pam", ""));
+		Assertions.assertFalse(departmentServiceImpl.editDepartment("Pam", ""));
+	}
+
 }

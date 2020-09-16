@@ -6,4 +6,6 @@ public interface EmployeeService {
 	void addEmployees(List<Employee> employees);
 
 	List<Employee> getEmployees();
+
+	Employee getEmployee(String employeeName);
 }

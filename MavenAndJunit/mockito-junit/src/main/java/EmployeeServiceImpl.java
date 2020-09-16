@@ -26,4 +26,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeeDao.getEmployees();
 	}
 
+	@Override
+	public Employee getEmployee(String employeeName) {
+		return employeeDao.getEmployee(employeeName);
+	}
+
 }

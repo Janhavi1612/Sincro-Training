@@ -45,4 +45,16 @@ public class DepartmentServiceImpl implements DepartmentService {
 		return !str.isEmpty() && !str.equals("bot");
 	}
 
+	@Override
+	public boolean editDepartment(String employeeName, String newDepartment) {
+		// Assumption: employee name is unique
+		Employee employee = employeeService.getEmployee(employeeName);
+		if (isValid(newDepartment)) {
+			employee.setDepartment(newDepartment);
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }

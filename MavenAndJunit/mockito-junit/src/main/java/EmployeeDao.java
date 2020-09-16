@@ -8,4 +8,6 @@ public interface EmployeeDao {
 
 	List<Employee> getEmployees();
 
+	Employee getEmployee(String employeeName);
+
 }

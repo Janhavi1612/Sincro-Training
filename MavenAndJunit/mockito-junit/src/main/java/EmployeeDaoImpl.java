@@ -18,4 +18,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return null;
 	}
 
+	@Override
+	public Employee getEmployee(String employeeName) {
+		// database
+		return null;
+	}
+
 }
