@@ -7,11 +7,15 @@ public class YearUtil {
 		} else {
 			boolean isLeap = false;
 
-			if ((year % 4 == 0 && year % 100 == 0 && year % 400 == 0) || (year % 4 == 0 && year % 100 != 0)) {
+			if (checkIfLeapYear(year)) {
 				isLeap = true;
 			}
 
 			return isLeap;
 		}
+	}
+
+	private boolean checkIfLeapYear(long year) {
+		return (year % 4 == 0 && year % 100 == 0 && year % 400 == 0) || (year % 4 == 0 && year % 100 != 0);
 	}
 }
