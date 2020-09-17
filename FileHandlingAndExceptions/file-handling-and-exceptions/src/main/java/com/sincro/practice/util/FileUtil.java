@@ -11,6 +11,7 @@ public class FileUtil {
 		try {
 			Files.lines(Paths.get(fileName)).map(str -> str.split(" ")).flatMap(Arrays::stream)
 					.map(str -> removeExtraChars(str)).forEach(str -> System.out.println(reverse(str)));
+
 		} catch (IOException ioException) {
 			ioException.printStackTrace();
 		}
