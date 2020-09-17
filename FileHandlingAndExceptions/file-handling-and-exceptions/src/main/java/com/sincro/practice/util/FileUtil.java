@@ -7,18 +7,14 @@ import java.util.Arrays;
 
 public class FileUtil {
 	public void printReversedWords(String fileName) {
-		if (fileName == null) {
-			throw new IllegalArgumentException("file name can not be null");
-		} else if (fileName.isEmpty()) {
-			throw new IllegalArgumentException("file name can not be empty");
-		} else {
-			try {
-				Files.lines(Paths.get(fileName)).map(str -> str.split(" ")).flatMap(Arrays::stream)
-						.forEach(str -> System.out.println(reverse(str)));
-			} catch (IOException ioException) {
-				ioException.printStackTrace();
-			}
+		checkForException(fileName, "Filename");
+		try {
+			Files.lines(Paths.get(fileName)).map(str -> str.split(" ")).flatMap(Arrays::stream)
+					.map(str -> removeExtraChars(str)).forEach(str -> System.out.println(reverse(str)));
+		} catch (IOException ioException) {
+			ioException.printStackTrace();
 		}
+
 	}
 
 	private String reverse(String str) {
@@ -27,13 +23,23 @@ public class FileUtil {
 	}
 
 	public boolean serachWordInFile(String fileName, String searchWord) {
+		checkForException(fileName, "Filename");
+		checkForException(searchWord, "Searchword");
 		try {
 			return Files.lines(Paths.get(fileName)).map(str -> str.split(" ")).flatMap(Arrays::stream)
-					.map(str -> removeExtraChars(str)).anyMatch(str -> str.equals(searchWord));
+					.map(str -> removeExtraChars(str)).anyMatch(str -> str.equalsIgnoreCase(searchWord));
 		} catch (IOException ioException) {
 			ioException.printStackTrace();
 		}
 		return false;
+	}
+
+	private void checkForException(String word, String wordType) {
+		if (word == null) {
+			throw new IllegalArgumentException(wordType + " can not be null");
+		} else if (word.isEmpty()) {
+			throw new IllegalArgumentException(wordType + " can not be empty");
+		}
 	}
 
 	private String removeExtraChars(String str) {
