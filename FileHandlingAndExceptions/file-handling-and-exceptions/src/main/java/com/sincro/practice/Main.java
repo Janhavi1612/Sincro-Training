@@ -9,6 +9,9 @@ public class Main {
 		String fileName = "sampleFile.txt";
 		FileUtil fileUtil = new FileUtil();
 		System.out.println("Reversed words from : " + fileName);
+		fileUtil.printReversedWords("test");
+
+		System.out.println("Reversed words from : " + fileName);
 		fileUtil.printReversedWords(fileName);
 
 		String searchWord = "web";

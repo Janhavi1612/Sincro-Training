@@ -13,7 +13,7 @@ public class FileUtil {
 					.map(str -> removeExtraChars(str)).forEach(str -> System.out.println(reverse(str)));
 
 		} catch (IOException ioException) {
-			ioException.printStackTrace();
+			System.out.println("File not found. Please ensure that the file path is correct.");
 		}
 
 	}
@@ -30,7 +30,7 @@ public class FileUtil {
 			return Files.lines(Paths.get(fileName)).map(str -> str.split(" ")).flatMap(Arrays::stream)
 					.map(str -> removeExtraChars(str)).anyMatch(str -> str.equalsIgnoreCase(searchWord));
 		} catch (IOException ioException) {
-			ioException.printStackTrace();
+			System.out.println("File not found. Please ensure that the file path is correct.");
 		}
 		return false;
 	}
