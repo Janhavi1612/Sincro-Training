@@ -8,10 +8,10 @@ import org.junit.jupiter.api.Test;
 
 class FileUtilTest {
 
-	FileUtil fileUtil;
+	private static FileUtil fileUtil;
 
-	@BeforeEach
-	void setUp() {
+	@BeforeAll
+	static void setUp() throws IOException {
 		fileUtil = new FileUtil();
 	}
 

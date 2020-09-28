@@ -15,10 +15,6 @@ public class Main {
 		fileUtil.printReversedWords(fileName);
 
 		String searchWord = "web";
-		if (fileUtil.serachWordInFile(fileName, searchWord)) {
-			System.out.println("Searchword:" + searchWord + " is present in: " + fileName);
-		} else {
-			System.out.println("Searchword:" + searchWord + " is not present in: " + fileName);
-		}
+		fileUtil.serachWordInFile(fileName, searchWord);
 	}
 }
