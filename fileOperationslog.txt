@@ -1,0 +1,53 @@
+
+
+File operations on : Mon Sep 28 14:25:22 IST 2020
+Searchword is empty. Illegal argument exception thrown.
+
+Searchword is null. Illegal argument exception thrown.
+
+searchWordInFile method called on file: sampleFile.txt for word: web.
+Word: web found in file: sampleFile.txt.
+operation completed successfully.
+
+
+
+File operations on : Mon Sep 28 14:25:22 IST 2020
+Searchword is empty. Illegal argument exception thrown.
+
+Searchword is null. Illegal argument exception thrown.
+
+searchWordInFile method called on file: sampleFile.txt for word: web.
+Word: web found in file: sampleFile.txt.
+operation completed successfully.
+
+searchWordInFile method called on file: sampleFile.txt for word: eclipse.
+Word: eclipse not found in file: sampleFile.txt.
+
+
+
+File operations on : Mon Sep 28 14:25:22 IST 2020
+Searchword is empty. Illegal argument exception thrown.
+
+Searchword is null. Illegal argument exception thrown.
+
+searchWordInFile method called on file: sampleFile.txt for word: web.
+Word: web found in file: sampleFile.txt.
+operation completed successfully.
+
+searchWordInFile method called on file: sampleFile.txt for word: eclipse.
+Word: eclipse not found in file: sampleFile.txt.
+
+printReversedWordsMethod called on file: 
+Filename is empty. Illegal argument exception thrown.
+
+Filename is empty. Illegal argument exception thrown.
+
+printReversedWordsMethod called on file: null
+Filename is null. Illegal argument exception thrown.
+
+Filename is null. Illegal argument exception thrown.
+
+searchWordInFile method called on file: sampleFile.txt for word: WeB.
+Word: WeB found in file: sampleFile.txt.
+operation completed successfully.
+
