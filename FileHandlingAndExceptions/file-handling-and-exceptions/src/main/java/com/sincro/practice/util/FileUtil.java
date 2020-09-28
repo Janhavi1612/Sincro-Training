@@ -64,13 +64,13 @@ public class FileUtil {
         return false;
     }
 
-	private void checkForException(String word, String wordType) {
-		if (word == null) {
-			throw new IllegalArgumentException(wordType + " can not be null");
-		} else if (word.isEmpty()) {
-			throw new IllegalArgumentException(wordType + " can not be empty");
-		}
-	}
+	private void checkIfWordIsValid(String word, String wordType) {
+        if (word == null) {
+            throw new IllegalArgumentException(wordType + " can not be null");
+        } else if (word.isEmpty()) {
+            throw new IllegalArgumentException(wordType + " can not be empty");
+        }
+    }
 
 	private String removeExtraChars(String str) {
 		return str.replaceAll("[^a-zA-Z0-9]", " ");
