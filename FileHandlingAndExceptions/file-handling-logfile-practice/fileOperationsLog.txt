@@ -1,0 +1,173 @@
+
+
+File operations on : Tue Sep 29 13:22:28 IST 2020
+searchWordInFile method called on file: test for word: .
+Searchword is empty. Illegal argument exception thrown.
+
+searchWordInFile method called on file: test for word: null.
+Searchword is null. Illegal argument exception thrown.
+
+searchWordInFile method called on file: sampleFile.txt for word: web.
+Word: web found in file: sampleFile.txt
+Search word operation completed successfully.
+
+
+
+File operations on : Tue Sep 29 13:22:28 IST 2020
+searchWordInFile method called on file: test for word: .
+Searchword is empty. Illegal argument exception thrown.
+
+searchWordInFile method called on file: test for word: null.
+Searchword is null. Illegal argument exception thrown.
+
+searchWordInFile method called on file: sampleFile.txt for word: web.
+Word: web found in file: sampleFile.txt
+Search word operation completed successfully.
+
+searchWordInFile method called on file: sampleFile.txt for word: eclipse.
+Word: eclipse not found in file: sampleFile.txt.
+
+
+
+File operations on : Tue Sep 29 13:22:28 IST 2020
+searchWordInFile method called on file: test for word: .
+Searchword is empty. Illegal argument exception thrown.
+
+searchWordInFile method called on file: test for word: null.
+Searchword is null. Illegal argument exception thrown.
+
+searchWordInFile method called on file: sampleFile.txt for word: web.
+Word: web found in file: sampleFile.txt
+Search word operation completed successfully.
+
+searchWordInFile method called on file: sampleFile.txt for word: eclipse.
+Word: eclipse not found in file: sampleFile.txt.
+
+printReversedWordsMethod called on file: 
+Filename is empty. Illegal argument exception thrown.
+
+searchWordInFile method called on file:  for word: web.
+Filename is empty. Illegal argument exception thrown.
+
+printReversedWordsMethod called on file: null
+Filename is null. Illegal argument exception thrown.
+
+searchWordInFile method called on file: null for word: web.
+Filename is null. Illegal argument exception thrown.
+
+searchWordInFile method called on file: sampleFile.txt for word: WeB.
+Word: WeB found in file: sampleFile.txt
+Search word operation completed successfully.
+
+
+
+File operations on : Tue Sep 29 13:22:35 IST 2020
+printReversedWordsMethod called on file: test
+Error in reading the sample text file. Reverse words operation could not be completed.
+
+Reverse words operation completed successfully.
+
+
+
+File operations on : Tue Sep 29 13:22:35 IST 2020
+printReversedWordsMethod called on file: test
+Error in reading the sample text file. Reverse words operation could not be completed.
+
+Reverse words operation completed successfully.
+
+printReversedWordsMethod called on file: sampleFile.txt
+orcniS
+sah
+derentrap
+htiw
+eBissecca
+ot
+evig
+uoy
+eht
+tsrif
+dna
+ylno
+IA
+derewop
+noitulos
+taht
+sekam
+bew
+ytilibissecca
+elpmis
+dna
+ citamotua
+sA
+a
+ tluser
+srelaed
+htiw
+a
+orcniS
+etisbeW
+lliw
+eviecer
+rehtona
+reyal
+egarevoc
+ta
+on
+lanoitidda
+ tsoc
+Reverse words operation completed successfully.
+
+
+
+File operations on : Tue Sep 29 13:22:35 IST 2020
+printReversedWordsMethod called on file: test
+Error in reading the sample text file. Reverse words operation could not be completed.
+
+Reverse words operation completed successfully.
+
+printReversedWordsMethod called on file: sampleFile.txt
+orcniS
+sah
+derentrap
+htiw
+eBissecca
+ot
+evig
+uoy
+eht
+tsrif
+dna
+ylno
+IA
+derewop
+noitulos
+taht
+sekam
+bew
+ytilibissecca
+elpmis
+dna
+ citamotua
+sA
+a
+ tluser
+srelaed
+htiw
+a
+orcniS
+etisbeW
+lliw
+eviecer
+rehtona
+reyal
+egarevoc
+ta
+on
+lanoitidda
+ tsoc
+Reverse words operation completed successfully.
+
+searchWordInFile method called on file: sampleFile.txt for word: web.
+Word: web found in file: sampleFile.txt
+Search word operation completed successfully.
+
