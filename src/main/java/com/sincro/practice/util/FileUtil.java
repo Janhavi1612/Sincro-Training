@@ -10,7 +10,7 @@ import static java.nio.file.Files.*;
 
 
 public class FileUtil {
-    private static String FILE_NAME = "fileOperationsLog.txt";
+    private static String FILE_NAME = "fileOperationslog.txt";
     private static StringBuilder logEntry;
     private Path fileOperationsLogPath;
 
