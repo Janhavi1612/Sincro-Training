@@ -1,7 +1,6 @@
 package com.sincro.practice.util;
 
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.TestInstance.Lifecycle;
 
 import java.io.IOException;
 
@@ -15,41 +14,39 @@ class FileUtilTest {
         fileUtil = new FileUtil();
     }
 
-
-
     @Test
     void shouldThrowErrorForEmptyFilename() {
-        Exception thrown = assertThrows(IllegalArgumentException.class, () -> fileUtil.printReversedWords(""));
+        Exception thrown = assertThrows(IllegalArgumentException.class, () -> fileUtil.reverseWords(""));
         assertEquals("Filename can not be empty", thrown.getMessage());
-        Exception thrown2 = assertThrows(IllegalArgumentException.class, () -> fileUtil.serachWordInFile("", "web"));
+        Exception thrown2 = assertThrows(IllegalArgumentException.class, () -> fileUtil.searchWordInFile("", "web"));
         assertEquals("Filename can not be empty", thrown2.getMessage());
     }
 
     @Test
     void shouldThrowErrorForNullFilename() {
-        Exception thrown = assertThrows(IllegalArgumentException.class, () -> fileUtil.printReversedWords(null));
+        Exception thrown = assertThrows(IllegalArgumentException.class, () -> fileUtil.reverseWords(null));
         assertEquals("Filename can not be null", thrown.getMessage());
-        Exception thrown2 = assertThrows(IllegalArgumentException.class, () -> fileUtil.serachWordInFile(null, "web"));
+        Exception thrown2 = assertThrows(IllegalArgumentException.class, () -> fileUtil.searchWordInFile(null, "web"));
         assertEquals("Filename can not be null", thrown2.getMessage());
     }
 
     @Test
     void shouldThrowErrorForInvalidSearchWord() {
-        Exception thrown = assertThrows(IllegalArgumentException.class, () -> fileUtil.serachWordInFile("test", ""));
+        Exception thrown = assertThrows(IllegalArgumentException.class, () -> fileUtil.searchWordInFile("test", ""));
         assertEquals("Searchword can not be empty", thrown.getMessage());
-        Exception thrown2 = assertThrows(IllegalArgumentException.class, () -> fileUtil.serachWordInFile("test", null));
+        Exception thrown2 = assertThrows(IllegalArgumentException.class, () -> fileUtil.searchWordInFile("test", null));
         assertEquals("Searchword can not be null", thrown2.getMessage());
     }
 
     @Test
-    void testSearchWord() throws IOException {
-        assertTrue(fileUtil.serachWordInFile("sampleFile.txt", "web"));
-        assertFalse(fileUtil.serachWordInFile("sampleFile.txt", "eclipse"));
+    void testSearchWord(){
+        assertTrue(fileUtil.searchWordInFile("sampleFile.txt", "web"));
+        assertFalse(fileUtil.searchWordInFile("sampleFile.txt", "eclipse"));
     }
 
     @Test
-    void shouldSearchWordIrrespectiveOfCase() throws IOException {
-        assertTrue(fileUtil.serachWordInFile("sampleFile.txt", "WeB"));
+    void shouldSearchWordIrrespectiveOfCase() {
+        assertTrue(fileUtil.searchWordInFile("sampleFile.txt", "WeB"));
     }
 
 }

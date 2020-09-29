@@ -9,12 +9,12 @@ public class Main {
         String fileName = "sampleFile.txt";
         FileUtil fileUtil = new FileUtil();
         System.out.println("Reversed words from : " + fileName);
-        fileUtil.printReversedWords("test");
+        fileUtil.reverseWords("test");
 
         System.out.println("Reversed words from : " + fileName);
-        fileUtil.printReversedWords(fileName);
+        fileUtil.reverseWords(fileName);
 
         String searchWord = "web";
-        fileUtil.serachWordInFile(fileName, searchWord);
+        fileUtil.searchWordInFile(fileName, searchWord);
     }
 }
