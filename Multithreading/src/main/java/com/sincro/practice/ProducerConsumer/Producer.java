@@ -1,4 +1,4 @@
-package com.sincro.practice.ProducerConsumerWithThread;
+package com.sincro.practice.ProducerConsumer;
 
 public class Producer extends Thread {
     private ProducerConsumer producerConsumer;
@@ -13,7 +13,7 @@ public class Producer extends Thread {
         try {
             producerConsumer.produce();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            System.out.println("Producer thread was interrupted during the process.");
         }
     }
 

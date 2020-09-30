@@ -1,4 +1,4 @@
-package com.sincro.practice.ProducerConsumerWithThread;
+package com.sincro.practice.ProducerConsumer;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
 package com.sincro.practice.ProducerConsumer;
 
-public class WithCompletableFUture {
+public class WithCompletableFuture {
 }
