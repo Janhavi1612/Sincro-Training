@@ -13,7 +13,7 @@ public class Producer extends Thread {
         try {
             producerConsumer.produce();
         } catch (InterruptedException e) {
-            System.out.println("Producer thread was interrupted during the process.");
+            System.out.println("ProducerConsumer thread was interrupted during the process.");
         }
     }
 

@@ -8,14 +8,14 @@ public class ProducerConsumer {
     List<Integer> resources = new ArrayList<Integer>();
     int capacity = 5;
 
-    public void produce() throws InterruptedException {
+    public  void produce() throws InterruptedException {
         int value=0;
         while(true){
             synchronized (this){
                 while(resources.size() == capacity){
                     wait();
                 }
-                System.out.println("Producer produced: "+value);
+                System.out.println("ProducerConsumer produced: "+value);
                 resources.add(value);
 
                 value = (value+1)%capacity;
