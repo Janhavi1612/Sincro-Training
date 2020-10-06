@@ -33,8 +33,8 @@ public class Criterion {
 
 
         public class FlexibleCriteriaMap {
-            private FlexibleCriteriaMap.County county;
-            private FlexibleCriteriaMap.State state;
+            private County county;
+            private State state;
 
             public class County {
                 private String key;
