@@ -23,7 +23,7 @@ public class VehicleCriteria {
     private List<Object> priceCriteria;
     private List<Object> cobaltStyleId;
     private List<Object> modelYears;
-    private List<OfferFlexibleCriteria2> offerFlexibleCriterias;
+    private List<OfferFlexibleCriteria> offerFlexibleCriterias;
     private boolean exclude;
     private boolean override;
 
@@ -193,11 +193,11 @@ public class VehicleCriteria {
         this.modelYears = modelYears;
     }
 
-    public List<OfferFlexibleCriteria2> getOfferFlexibleCriterias() {
+    public List<OfferFlexibleCriteria> getOfferFlexibleCriterias() {
         return offerFlexibleCriterias;
     }
 
-    public void setOfferFlexibleCriterias(List<OfferFlexibleCriteria2> offerFlexibleCriterias) {
+    public void setOfferFlexibleCriterias(List<OfferFlexibleCriteria> offerFlexibleCriterias) {
         this.offerFlexibleCriterias = offerFlexibleCriterias;
     }
 
