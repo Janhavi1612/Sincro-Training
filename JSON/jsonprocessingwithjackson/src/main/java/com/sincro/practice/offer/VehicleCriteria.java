@@ -1,4 +1,4 @@
-package com.sincro.practice.schemaclasses;
+package com.sincro.practice.offer;
 
 import java.util.List;
 

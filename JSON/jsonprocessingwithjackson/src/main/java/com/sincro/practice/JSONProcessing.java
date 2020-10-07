@@ -1,7 +1,7 @@
 package com.sincro.practice;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sincro.practice.schemaclasses.OffersJsonRoot;
+import com.sincro.practice.offer.OffersJsonRoot;
 
 import java.io.IOException;
 import java.nio.file.Files;

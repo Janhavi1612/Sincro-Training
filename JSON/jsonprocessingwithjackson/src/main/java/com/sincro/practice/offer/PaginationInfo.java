@@ -1,4 +1,4 @@
-package com.sincro.practice.schemaclasses;
+package com.sincro.practice.offer;
 
 class PaginationInfo {
     private int limit;
