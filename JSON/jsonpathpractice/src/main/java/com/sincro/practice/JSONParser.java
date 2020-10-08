@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.List;
+import java.util.Map;
 
 public class JSONParser {
     private static String JSON_FILE_NAME = "offers.json";
@@ -50,6 +51,7 @@ public class JSONParser {
         return documentContext.read(jsonPath);
     }
 
-
-
+    public List<Map<String, Object>> getListOfMapsAtPath(String jsonPath){
+        return documentContext.read(jsonPath);
+    }
 }

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -42,5 +43,12 @@ class JSONParserTest {
     void shouldTypeOfCriteria(){
         path = "$.offers[0].criteria[1].type";
         assertEquals("GEOGRAPHIC",jsonParser.<String>getItemAtPath(path));
+    }
+
+    @Test
+    void shouldReturnListMatchingTheFilter(){
+        path = "$.offers[0].vehicleCriteria.offerFlexibleCriterias[?(@.ruleValue =~/12P.*/)]";
+        List<Map<String,Object>> retrievedOfferFlexibleCriterias = jsonParser.getListOfMapsAtPath(path);
+        assertEquals("1",retrievedOfferFlexibleCriterias.get(0).get("index").toString());
     }
 }
