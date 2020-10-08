@@ -11,15 +11,15 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-class Main {
-    private static Logger logger = Logger.getLogger(Main.class.getName());
+class WithLockAPI {
+    private static Logger logger = Logger.getLogger(WithLockAPI.class.getName());
 
     private static List<Integer> sharedResources = new ArrayList<>();
     private static List<Integer> getSharedResources() {
         return sharedResources;
     }
 
-    public static void main(String[] args){
+    public List<Integer> runProducerConsumer(){
         ExecutorService producersThreadPool = Executors.newFixedThreadPool(2);
         ExecutorService consumersThreadPool = Executors.newFixedThreadPool(2);
         startProducer(producersThreadPool);
@@ -28,12 +28,13 @@ class Main {
         stopProducerThreads(producersThreadPool);
         stopConsumerThreads(consumersThreadPool);
 
+        return sharedResources;
     }
 
 
     private static void startConsumer(ExecutorService consumersThreadPool) {
         for (int i=0;i<10;i++) {
-            CompletableFuture.supplyAsync(Main::getSharedResources, consumersThreadPool)
+            CompletableFuture.supplyAsync(WithLockAPI::getSharedResources, consumersThreadPool)
                     .thenAccept(resources -> {
                         try {
                             com.sincro.practice.producerConsumerWithCompletableFuture.ProducerConsumer.consume(resources);
@@ -47,7 +48,7 @@ class Main {
 
     private static void startProducer(ExecutorService producersThreadPool) {
         for(int i=0;i<10;i++) {
-            CompletableFuture.supplyAsync(Main::getSharedResources, producersThreadPool)
+            CompletableFuture.supplyAsync(WithLockAPI::getSharedResources, producersThreadPool)
                     .thenApply(resources -> {
                         List<Integer> updatedResources = new ArrayList<>();
                         try {
