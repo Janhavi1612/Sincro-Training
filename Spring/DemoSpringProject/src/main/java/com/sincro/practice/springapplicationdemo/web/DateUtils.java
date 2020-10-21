@@ -10,7 +10,7 @@ public class DateUtils {
 
     public static Date createDateFromString(String dateString){
         Date date = null;
-        if(!dateString.isEmpty()){
+        if(dateString != null){
             try{
                 date = DATE_FORMAT.parse(dateString);
             } catch (ParseException e) {

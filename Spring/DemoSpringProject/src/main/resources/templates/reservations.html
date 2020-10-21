@@ -16,7 +16,7 @@
     <tr th:each="roomReservation : ${roomReservations}">
         <td th:text="${roomReservation.roomName}">Room name</td>
         <td th:text="${roomReservation.roomNumber}">Room number</td>
-        <td th:text="${roomReservation.lastName} + ', ' +${roomReservation.firstName}">Full name</td>
+        <td th:text="${roomReservation.lastName}!=null ? ${roomReservation.lastName} + ', ' +${roomReservation.firstName} : 'VACANT'">Full name</td>
     </tr>
 </table>
 </body>

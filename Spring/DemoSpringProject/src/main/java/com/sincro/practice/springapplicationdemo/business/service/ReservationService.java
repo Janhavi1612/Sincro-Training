@@ -43,6 +43,7 @@ public class ReservationService {
             roomReservation.setGuestId(reservation.getGuestId());
             roomReservation.setDate(reservation.getReservationDate());
             Guest guest = this.guestRepository.findById(reservation.getGuestId()).get();
+            System.out.println("Guest :"+ guest.getFirstName()+" "+guest.getLastName());
             roomReservation.setFirstName(guest.getFirstName());
             roomReservation.setLastName(guest.getLastName());
         });
