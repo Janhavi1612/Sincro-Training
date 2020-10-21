@@ -1,0 +1,10 @@
+
+{
+java:S3008"YRename this field "JSON_FILE_NAME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Í”¦õüÿÿÿÿ8ø½È•Ð.
+I
+java:S3010",Remove this assignment of "documentContext".(ƒÀ©…8¯²Ð•Ð.
+V
+java:S4719"9Replace charset name argument with StandardCharsets.UTF_8(ÿ×È½8£ÜÖ•Ð.
+Z	java:S106""9Replace this use of System.out or System.err by a logger.(£õì€ùÿÿÿÿ8ø½È•Ð.
+U	java:S106"9Replace this use of System.out or System.err by a logger.(æÜÚø8 ŸË•Ð.
+U	java:S106("9Replace this use of System.out or System.err by a logger.(“³·œ8ø£™äÐ.
