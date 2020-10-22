@@ -1,9 +1,8 @@
 package com.sincro.practice.springapplicationdemo.web;
 
+import com.sincro.practice.springapplicationdemo.Utilities.DateUtils;
 import com.sincro.practice.springapplicationdemo.business.domain.RoomReservation;
 import com.sincro.practice.springapplicationdemo.business.service.ReservationService;
-import com.sincro.practice.springapplicationdemo.data.entity.Room;
-import com.sincro.practice.springapplicationdemo.data.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,4 +1,4 @@
-package com.sincro.practice.springapplicationdemo.web;
+package com.sincro.practice.springapplicationdemo.Utilities;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -9,15 +9,15 @@ public class DateUtils {
     private static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 
     public static Date createDateFromString(String dateString){
-        Date date = null;
+        Date date = new Date();
         if(dateString != null){
             try{
+
                 date = DATE_FORMAT.parse(dateString);
             } catch (ParseException e) {
-                date = new Date();
+                return date;
             }
         }
-        date = new Date();
         return date;
     }
 }
