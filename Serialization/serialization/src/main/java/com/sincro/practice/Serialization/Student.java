@@ -1,4 +1,4 @@
-package com.sincro.practice;
+package com.sincro.practice.Serialization;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

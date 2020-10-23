@@ -1,7 +1,7 @@
 package com.sincro.practice.utils;
 
 
-import com.sincro.practice.Student;
+import com.sincro.practice.Serialization.Student;
 
 import java.io.*;
 import java.util.logging.Level;
@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 
 public class SerializationUtil {
     private static Logger logger = Logger.getLogger(SerializationUtil.class.getName());
-    private static String fileName = "/Users/dabakj/Janhavi1612LocalRepo/Serialization/serialization/src/main/resources/sampleFile.txt";
+    private static String fileName = "/Users/dabakj/Janhavi1612LocalRepo/Serialization/serialization/src/main/resources/student.ser";
 
 
     public static Student deserialize(){
@@ -51,7 +51,9 @@ public class SerializationUtil {
         FileOutputStream fileOutputStream = new FileOutputStream(fileName);
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
         objectOutputStream.writeObject(student);
-
+        objectOutputStream.flush();
+        objectOutputStream.close();
+        fileOutputStream.close();
 
     }
 }
