@@ -1,8 +1,6 @@
 package com.sincro.practice;
 
-import com.sincro.practice.callCentre.Directors;
-import com.sincro.practice.callCentre.Employees;
-import com.sincro.practice.callCentre.Managers;
+import com.sincro.practice.callCentre.*;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -14,40 +12,76 @@ public class CallService {
     private static int NUMBER_OF_MANAGERS = 4;
     private static int NUMBER_OF_DIRECTORS = 2;
 
-    private Employees employees;
-    private Managers managers;
-    private Directors directors;
+    private Agents employees;
+    private Agents managers;
+    private Agents directors;
 
     public CallService(){
-        employees = new Employees(NUMBER_OF_EMPLOYEES);
-        managers = new Managers(NUMBER_OF_MANAGERS);
-        directors = new Directors(NUMBER_OF_DIRECTORS);
+        employees = new Agents(NUMBER_OF_EMPLOYEES, AgentRank.EMPLOYEE);
+        managers = new Agents(NUMBER_OF_MANAGERS,AgentRank.MANAGER);
+        directors = new Agents(NUMBER_OF_DIRECTORS, AgentRank.DIRECTOR);
     }
 
     public boolean dispatchCall(){
-        if(employees.checkIfEmployeeAvailableAndAssignCall()){
-            employees.endCall();
-            return true;
+        boolean success = true;
+        boolean employeeAttendedCall = transferCallToEmployee();
+        if(!employeeAttendedCall){
+            boolean managerAttendedCall = transferCallToManager();
+            if(!managerAttendedCall){
+                boolean directorAttendedCall = transferCallToDirector();
+                if(!directorAttendedCall){
+                    success = false;
+                }
+            }
         }
-        else if(managers.checkIfManagerAvailableAndAssignCal()) {
-            managers.endCall();
-            return true;
+        return  success;
+    }
 
-        }
-        else if(directors.checkIfDirectorAvailableAndAssignCall()){
-            directors.endCall();
+    private void addCustomerToWaitingQueue() {
+
+    }
+
+    private boolean transferCallToManager() {
+        if(managers.checkIfFreeAndAssignCall()) {
             return true;
+        }
+        else {
+            System.out.println("All managers busy, Transferring call to director.");
+            return false;
+        }
+    }
+
+    private boolean transferCallToEmployee() {
+        if(employees.checkIfFreeAndAssignCall()) {
+            return true;
+        }
+        else {
+            System.out.println("All employees busy, Transferring call to manager.");
+            return false;
+        }
+    }
+
+    private boolean transferCallToDirector() {
+        if (directors.checkIfFreeAndAssignCall()) {
+            return true;
+        }
+        else{
+            System.out.println("Please wait, we will connect you to an agent as soon as they are available.");
         }
         return false;
     }
 
-    public static void main(String[] args) {
-        final ExecutorService customersExecutorService = Executors.newFixedThreadPool(16);
+    public static void main(String[] args) throws InterruptedException {
+        final ExecutorService customersExecutorService = Executors.newFixedThreadPool(17);
         CallService callService = new CallService();
 
-        IntStream.range(0,16).forEach(customer -> customersExecutorService.execute(callService::dispatchCall));
-
+        IntStream.range(0,17).forEach(customer -> customersExecutorService.execute(callService::dispatchCall));
+        Thread.sleep(500);
         customersExecutorService.shutdown();
+
+        ExecutorService newCall = Executors.newFixedThreadPool(5);
+        IntStream.range(0,5).forEach(customer -> newCall.execute(callService::dispatchCall));
+        newCall.shutdown();
     }
 
 }
