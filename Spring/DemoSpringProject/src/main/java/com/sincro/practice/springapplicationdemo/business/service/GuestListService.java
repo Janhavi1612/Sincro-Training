@@ -23,7 +23,7 @@ public class GuestListService {
         List<Guest> sortedGuestList = new ArrayList<>();
         guestRepository.findAll().forEach(sortedGuestList::add);
 
-        sortedGuestList.sort(Comparator.comparing(Guest::getLastName));
+        sortedGuestList.sort(Comparator.comparing(Guest::getFirstName));
 
         return sortedGuestList;
 
