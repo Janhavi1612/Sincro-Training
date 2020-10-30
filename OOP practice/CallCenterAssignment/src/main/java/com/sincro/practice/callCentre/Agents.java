@@ -3,8 +3,8 @@ package com.sincro.practice.callCentre;
 import java.util.concurrent.Semaphore;
 
 public class Agents {
-    Semaphore agentSemaphore;
-    AgentRank agentRank;
+    private Semaphore agentSemaphore;
+    private AgentRank agentRank;
 
     public Agents(int numberOfAgents, AgentRank agentRank){
         agentSemaphore = new Semaphore(numberOfAgents);
@@ -14,12 +14,16 @@ public class Agents {
     public boolean checkIfFreeAndAssignCall(){
         boolean agentAvailable = agentSemaphore.tryAcquire();
         if(agentAvailable){
-            System.out.println("call attended by "+agentRank.toString()+".");
+            System.out.println("Customer: "+Thread.currentThread()+" call attended by "+agentRank.toString());
+
             endCall();
         }
 
         return agentAvailable;
     }
+
+
+
     public void endCall(){
         try {
             Thread.currentThread().sleep(50);
@@ -28,7 +32,6 @@ public class Agents {
             Thread.currentThread().interrupt();
         }
         agentSemaphore.release(1);
-        System.out.println("call disconnected.");
     }
 
 }

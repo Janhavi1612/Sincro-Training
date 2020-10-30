@@ -37,8 +37,19 @@ public class CallService {
         return  success;
     }
 
-    private void addCustomerToWaitingQueue() {
+    private void assignCallOrWait() {
 
+        boolean callCompleted = dispatchCall();
+        while (!callCompleted) {
+            try {
+                System.out.println("Please wait while we are connecting you.");
+                Thread.currentThread().sleep(50);
+            } catch (InterruptedException e) {
+                System.out.println("Error occurred while disconnecting");
+                Thread.currentThread().interrupt();
+            }
+            callCompleted = dispatchCall();
+        }
     }
 
     private boolean transferCallToManager() {
@@ -66,16 +77,18 @@ public class CallService {
             return true;
         }
         else{
-            System.out.println("Please wait, we will connect you to an agent as soon as they are available.");
+            return false;
         }
-        return false;
+
     }
 
     public static void main(String[] args) throws InterruptedException {
-        final ExecutorService customersExecutorService = Executors.newFixedThreadPool(17);
+        final ExecutorService customersExecutorService = Executors.newFixedThreadPool(20);
         CallService callService = new CallService();
 
-        IntStream.range(0,17).forEach(customer -> customersExecutorService.execute(callService::dispatchCall));
+        IntStream.range(0,20).forEach(customer -> {
+            customersExecutorService.execute(callService::assignCallOrWait);
+        });
         Thread.sleep(500);
         customersExecutorService.shutdown();
 
