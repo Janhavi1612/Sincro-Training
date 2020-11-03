@@ -31,7 +31,9 @@ public class Agents {
             System.out.println("Error occurred while disconnecting");
             Thread.currentThread().interrupt();
         }
-        agentSemaphore.release(1);
+        finally {
+            agentSemaphore.release(1);
+        }
     }
 
 }
