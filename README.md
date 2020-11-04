@@ -1,6 +1,6 @@
 # Sincro-Training
 
-This Repo contains projects based on following topics:
+##Topics:
 
 1.JUnit
 
@@ -15,3 +15,5 @@ This Repo contains projects based on following topics:
 6.Spring boot
 
 7.Spring batch
+
+##Requirement: IntelliJ IDEA
