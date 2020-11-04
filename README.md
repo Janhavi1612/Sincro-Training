@@ -1,6 +1,6 @@
 # Sincro-Training
 
-##Topics:
+## Topics:
 
 1.JUnit
 
@@ -16,4 +16,6 @@
 
 7.Spring batch
 
-##Requirement: IntelliJ IDEA
+## Requirement: 
+
+IntelliJ IDEA
